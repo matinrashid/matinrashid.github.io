@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Matin Rashid</title>
+<style>
+:root{
+  box-sizing:border-box;
+  padding-top:env(safe-area-inset-top,0px);
+  padding-bottom:env(safe-area-inset-bottom,0px);
+  --bg:#070b12;--card:rgba(14,22,34,.72);--text:#e6edf6;--muted:#8a99ad;--line:rgba(80,200,255,.18);--accent:#38d6ff;--accent2:#7cffb2;--chip:rgba(56,214,255,.1);--chip-text:#8fe6ff;--node:56,214,255;
+}
+@media (prefers-color-scheme: light){
+  :root:not([data-theme="dark"]){--bg:#eef4fa;--card:rgba(255,255,255,.8);--text:#0e1a28;--muted:#53657a;--line:rgba(10,110,160,.22);--accent:#0a78b5;--accent2:#0d8a55;--chip:rgba(10,120,181,.1);--chip-text:#0a5c8a;--node:10,120,181;}
+}
+:root[data-theme="light"]{--bg:#eef4fa;--card:rgba(255,255,255,.8);--text:#0e1a28;--muted:#53657a;--line:rgba(10,110,160,.22);--accent:#0a78b5;--accent2:#0d8a55;--chip:rgba(10,120,181,.1);--chip-text:#0a5c8a;--node:10,120,181;}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+*,*::before,*::after{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--text);font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,"Liberation Mono",monospace;line-height:1.6;min-height:100vh}
+#bg{position:fixed;inset:0;width:100%;height:100%;z-index:0;pointer-events:none}
+.grid{position:fixed;inset:0;z-index:0;pointer-events:none;background-image:linear-gradient(var(--line) 1px,transparent 1px),linear-gradient(90deg,var(--line) 1px,transparent 1px);background-size:44px 44px;opacity:.35;-webkit-mask-image:radial-gradient(ellipse at 50% 30%,#000 10%,transparent 75%);mask-image:radial-gradient(ellipse at 50% 30%,#000 10%,transparent 75%)}
+main{position:relative;z-index:1;max-width:680px;margin:0 auto;padding:44px 20px 56px}
+header{margin-bottom:26px}
+.prompt{color:var(--accent2);font-size:13px;margin:0 0 10px}
+.prompt span{color:var(--muted)}
+h1{margin:0;font-size:34px;letter-spacing:-.5px;line-height:1.15}
+h1 .cur{display:inline-block;width:12px;height:30px;background:var(--accent);vertical-align:-4px;margin-left:6px;animation:blink 1.1s steps(1) infinite}
+@keyframes blink{50%{opacity:0}}
+.role{margin:8px 0 0;color:var(--accent);font-size:14px}
+.bio{margin:16px 0 0;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;font-size:15px;color:var(--text);opacity:.92}
+.links{display:grid;grid-template-columns:1fr;gap:10px;margin:26px 0}
+.link{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:14px 18px;background:var(--card);border:1px solid var(--line);border-radius:10px;color:var(--text);text-decoration:none;font-weight:600;font-size:14px;backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);transition:border-color .15s,transform .15s,box-shadow .15s}
+.link:hover{border-color:var(--accent);transform:translateY(-1px);box-shadow:0 0 18px -6px var(--accent)}
+.link small{display:block;font-weight:400;color:var(--muted);font-size:12px;margin-top:2px}
+.arrow{color:var(--accent);font-size:18px}
+section{margin-top:32px}
+h2{font-size:12px;text-transform:uppercase;letter-spacing:2px;color:var(--accent2);margin:0 0 12px;font-weight:600}
+h2::before{content:"// ";color:var(--muted)}
+.card{background:var(--card);border:1px solid var(--line);border-left:3px solid var(--accent);border-radius:10px;padding:16px 18px;margin-bottom:10px;backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px)}
+.card h3{margin:0;font-size:16px}
+.meta{color:var(--muted);font-size:12px;margin:2px 0 8px}
+.card p{margin:0;font-size:14px;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chip{background:var(--chip);color:var(--chip-text);border:1px solid var(--line);padding:4px 11px;border-radius:6px;font-size:12px}
+.group{margin-bottom:14px}
+.group .label{font-size:12px;color:var(--muted);margin-bottom:6px}
+footer{margin-top:40px;color:var(--muted);font-size:12px}
+@media (prefers-reduced-motion: reduce){h1 .cur{animation:none}}
+</style>
+</head>
+<body>
+<canvas id="bg" aria-hidden="true"></canvas>
+<div class="grid" aria-hidden="true"></div>
+<main>
+  <header>
+    <h1>Matin Rashid<span class="cur"></span></h1>
+    <p class="role">Computer Engineering Student · C &amp; Systems Programming · AI</p>
+    <p class="bio">I’m a computer engineering student at KTH who builds things from the ground up: a native C multiplayer game with a custom UDP networking layer, and a local AI assistant on the side. I’m looking to grow my systems and native application skills on a production codebase with real-world impact.</p>
+  </header>
+
+  <nav class="links" aria-label="Links">
+    <a class="link" href="https://github.com/matinrashid" target="_blank" rel="noopener">
+      <span>GitHub<small>Code and projects</small></span><span class="arrow">↗</span>
+    </a>
+    <a class="link" href="https://www.linkedin.com/in/matin-rashid133" target="_blank" rel="noopener">
+      <span>LinkedIn<small>Experience and connections</small></span><span class="arrow">↗</span>
+    </a>
+    <a class="link" href="mailto:matin.11@icloud.com">
+      <span>Email<small>matin.11@icloud.com</small></span><span class="arrow">↗</span>
+    </a>
+  </nav>
+
+  <section>
+    <h2>Projects</h2>
+    <div class="card">
+      <h3>Reaper</h3>
+      <div class="meta">KTH game project · Mar–May 2026</div>
+      <p>An asymmetric, networked 2D multiplayer survival game for up to 4 players, built from scratch in C with SDL2. Custom UDP client-server architecture, frame-rate-independent movement, grid-based collision, dynamic tilemaps, real-time audio and field-of-view lighting. Built with GCC and Make on Windows and macOS, in an agile team of 6.</p>
+    </div>
+    <div class="card">
+      <h3>G.W.E.N – Local AI Assistant</h3>
+      <div class="meta">Personal project · Aug 2026 – ongoing</div>
+      <p>A local LLM chat app running Qwen3.5 9B through Ollama, with a Python/Flask backend, streaming responses and a browser interface. Includes conversation memory, versioned system prompts, regression testing, and an LLM-as-a-judge setup for hallucination detection.</p>
+    </div>
+  </section>
+
+  <section>
+    <h2>Skills</h2>
+    <div class="group"><div class="label">Languages</div><div class="chips"><span class="chip">C</span><span class="chip">Java</span><span class="chip">Python</span><span class="chip">SQL</span><span class="chip">HTML</span><span class="chip">JavaScript</span><span class="chip">Swift</span></div></div>
+    <div class="group"><div class="label">AI development</div><div class="chips"><span class="chip">Ollama</span><span class="chip">Flask REST API</span><span class="chip">Streaming</span><span class="chip">AI evaluation</span><span class="chip">LLM</span><span class="chip">AI agents</span><span class="chip">Automation</span></div></div>
+    <div class="group"><div class="label">Networking &amp; tools</div><div class="chips"><span class="chip">UDP client-server</span><span class="chip">CCNA</span><span class="chip">Git</span><span class="chip">Make / GCC</span><span class="chip">Agile (Taiga)</span></div></div>
+    <div class="group"><div class="label">Learning &amp; workplace</div><div class="chips"><span class="chip">Digital learning design</span><span class="chip">Onboarding</span><span class="chip">Microsoft 365</span></div></div>
+    <div class="group"><div class="label">Spoken languages</div><div class="chips"><span class="chip">Arabic</span><span class="chip">Kurdish</span><span class="chip">Swedish</span><span class="chip">English</span></div></div>
+  </section>
+
+  <section>
+    <h2>Education</h2>
+    <div class="card">
+      <h3>B.Sc. Computer Engineering</h3>
+      <div class="meta">KTH Royal Institute of Technology · Sep 2025 – ongoing</div>
+      <p>Focus on problem solving, programming and technical development.</p>
+    </div>
+  </section>
+
+  <footer>© Matin Rashid</footer>
+</main>
+<script>
+(function(){
+  var c=document.getElementById('bg'),x=c.getContext('2d'),w,h,pts=[],dpr=Math.min(window.devicePixelRatio||1,2);
+  var reduce=window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  function rgb(){var v=getComputedStyle(document.documentElement).getPropertyValue('--node').trim();return v||'56,214,255';}
+  function size(){
+    w=window.innerWidth;h=window.innerHeight;c.width=w*dpr;c.height=h*dpr;x.setTransform(dpr,0,0,dpr,0,0);
+    var n=Math.max(28,Math.min(80,Math.floor(w*h/16000)));pts=[];
+    for(var i=0;i<n;i++)pts.push({x:Math.random()*w,y:Math.random()*h,vx:(Math.random()-.5)*.35,vy:(Math.random()-.5)*.35});
+  }
+  function draw(){
+    var col=rgb();x.clearRect(0,0,w,h);
+    for(var i=0;i<pts.length;i++){
+      var p=pts[i];
+      if(!reduce){p.x+=p.vx;p.y+=p.vy;if(p.x<0||p.x>w)p.vx*=-1;if(p.y<0||p.y>h)p.vy*=-1;}
+      for(var j=i+1;j<pts.length;j++){
+        var q=pts[j],dx=p.x-q.x,dy=p.y-q.y,d=Math.sqrt(dx*dx+dy*dy);
+        if(d<130){x.strokeStyle='rgba('+col+','+(0.28*(1-d/130)).toFixed(3)+')';x.lineWidth=1;x.beginPath();x.moveTo(p.x,p.y);x.lineTo(q.x,q.y);x.stroke();}
+      }
+      x.fillStyle='rgba('+col+',0.8)';x.beginPath();x.arc(p.x,p.y,1.8,0,6.283);x.fill();
+    }
+    if(!reduce)requestAnimationFrame(draw);
+  }
+  size();draw();
+  window.addEventListener('resize',function(){size();if(reduce)draw();});
+})();
+</script>
+</body>
+</html>
